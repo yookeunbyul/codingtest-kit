@@ -24,6 +24,10 @@ H-Index는 과학자의 생산성과 영향력을 나타내는 지표입니다. 
 
 ## 풀이
 
+https://www.ibric.org/bric/trend/bio-series.do?mode=series_view&newsArticleNo=8802417&articleNo=8882714&beforeMode=latest_list#!/list
+
+h-index에 이해하려면 이 글을 먼저 읽어보는 것이 좋다.
+
 ```
 function solution(citations) {
     //어느 과학자의 H-Index를 나타내는 값인 h를 구하려고 합니다.
