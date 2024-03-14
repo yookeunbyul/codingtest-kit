@@ -21,13 +21,44 @@ function combinations(arr,n){
 
     arr.forEach((fixed, idx, arr) => {
         let rest = arr.slice(idx+1);
-        //선택된 요소를 제외한 나머지를 구한다.
+        //선택된 요소의 이후를 구한다.
 
         let combis = combinations(rest, n-1);
         //나머지 요소를 가지고 조합을 구한다.
 
         let combine = combis.map(v => [fixed, ...v]);
-        구한 조합과 선택된 요소를 합쳐준다.
+        //구한 조합과 선택된 요소를 합쳐준다.
+
+        result.push(...combine);
+        //결과를 result에 넣어준다.
+    })
+
+    return result;
+}
+```
+
+### 순열
+
+서로 다른 n개의 물건에서 순서를 생각하고 r개를 택할 때,
+
+하지만 순서가 중요해서 [1, 2, 3] = [3, 2, 1] 이렇게 순서가 바뀌면 다른 순열이라고 생각한다.
+
+```
+function permutations(arr,n){
+    //1개만 뽑는거면 그대로 1개 뽑아서 return
+    if(n === 1) return arr.map(v => [v]);
+
+    let result = [];
+
+    arr.forEach((fixed, idx, arr) => {
+        let rest = arr.filter((_, index) => idx !== index);
+        //선택된 요소를 제외한 나머지를 구한다.(true값만 남음)
+
+        let perms = permutations(rest, n-1);
+        //나머지 요소를 가지고 조합을 구한다.
+
+        let combine = perms.map(v => [fixed, ...v]);
+        //구한 조합과 선택된 요소를 합쳐준다.
 
         result.push(...combine);
         //결과를 result에 넣어준다.
